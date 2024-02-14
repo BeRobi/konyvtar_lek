@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Models\Book;
 use App\Models\Copy;
 use App\Models\Reservation;
+use App\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,8 @@ Route::middleware('auth.basic')->group(function () {
     Route::get('title_count/{title}', [BookController::class, 'titleCount']);
     Route::get('h_author_title/{hardcovered}', [CopyController::class, 'hAuthorTitle']);
     Route::get('ev/{year}', [CopyController::class, 'ev']);
+    //2 tábla módosítása egyszerre
+    Route::patch('bring-back/{copy_id}/{start}', [LendingController::class, 'bringBack']);
 });
 
 //guest is láthatja
